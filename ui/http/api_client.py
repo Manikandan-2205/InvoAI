@@ -1,12 +1,11 @@
 import httpx
 
-API_BASE_URL = "https://localhost:8000/api"  # Replace with your HTTPS domain
+API_BASE_URL = "https://localhost:8000/api"
 
-# --- Sync Version (Simple for Flask UI) ---
 def api_get(endpoint: str, params=None):
     url = f"{API_BASE_URL}/{endpoint.lstrip('/')}"
     try:
-        with httpx.Client(verify=False, timeout=10.0) as client:  # verify=False for local HTTPS dev
+        with httpx.Client(verify=False, timeout=10.0) as client:
             response = client.get(url, params=params)
             return response.json()
     except Exception as e:

@@ -13,5 +13,6 @@ def get_db():
         db.close()
 
 @router.get("/")
+
 def get_users(db: Session = Depends(get_db)):
     return db.query(User).filter(User.is_deleted == 0).all()

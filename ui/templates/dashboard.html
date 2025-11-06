@@ -1,10 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>User List</h3>
-<table border="1">
-  <tr><th>ID</th><th>Name</th></tr>
-  {% for u in users %}
-  <tr><td>{{ u.user_id }}</td><td>{{ u.user_name }}</td></tr>
-  {% endfor %}
-</table>
+<div class="card shadow-sm p-4">
+    <h2 class="mb-4">Vendor Dashboard</h2>
+
+    <form id="vendorForm" class="mb-3 d-flex">
+        <input type="text" name="vendor_name" id="vendor_name" class="form-control me-2" placeholder="Add Vendor" required>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+    <div class="row">
+        {% if response.response_status %}
+            {% for v in response.source_output %}
+                <div class="col-md-4 mb-3">
+                    <div class="card border-0 shadow-sm p-3">
+                        <h5>{{ v.vendor_name }}</h5>
+                        <p>ID: {{ v.vendor_id }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">{{ response.message }}</div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+$('#vendorForm').on('submit', async function (e) {
+    e.preventDefault();
+    const vendorName = $('#vendor_name').val();
+    const res = await fetch('/vendor/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ vendor_name: vendorName })
+    });
+    const data = await res.json();
+    alert(data.message);
+    location.reload();
+});
+</script>
 {% endblock %}
