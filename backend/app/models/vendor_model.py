@@ -3,6 +3,7 @@ from app.core.database import Base
 
 class Vendor(Base):
     __tablename__ = "tb_inai_mas_vendor"
+    __table_args__ = {"schema": "invoai"}
 
     vendor_id = Column(Integer, primary_key=True, index=True)
     vendor_name = Column(String(100), nullable=False, unique=True)

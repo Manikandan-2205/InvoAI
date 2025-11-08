@@ -3,7 +3,8 @@ from app.core.database import Base
 
 class User(Base):
     __tablename__ = "tb_inai_mas_user"
-
+    __table_args__ = {"schema": "invoai"}
+    
     user_id = Column(Integer, primary_key=True, index=True)
     bio_id = Column(Integer)
     user_name = Column(String(25), nullable=False)
