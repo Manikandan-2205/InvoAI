@@ -6,8 +6,10 @@ from app.schemas.user_schema import UserCreate, UserUpdate, PasswordUpdate
 from app.core.result import Result
 from app.core.logger import logger
 from app.repositories.user_repository import UserRepository
+import hashlib
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 
 class UserService:
     """
@@ -17,8 +19,14 @@ class UserService:
     def __init__(self, repo: UserRepository):
         self.repo = repo
 
-    def _hash_password(self, password: str) -> str:
-        return pwd_context.hash(password)
+    def hash_password(password: str) -> str:
+        sha256_hashed = hashlib.sha256(password.encode("utf-8")).hexdigest()
+        return pwd_context.hash(sha256_hashed)
+
+    def verify_password(plain_password: str, hashed_password: str) -> bool:
+        sha256_hashed = hashlib.sha256(plain_password.encode("utf-8")).hexdigest()
+        return pwd_context.verify(sha256_hashed, hashed_password)
+
 
     def get_all_users(self):
         try:
@@ -39,26 +47,20 @@ class UserService:
         return Result.Ok(user, message="User fetched successfully")
 
     def create_user(self, data: UserCreate):
-        logger.info(f"Creating user: {data.user_name}")
         try:
             user = User(
                 bio_id=data.bio_id,
                 user_name=data.user_name,
-                password_hash=self._hash_password(data.password),
+                password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
                 created_by=data.created_by,
                 created_at=datetime.now(),
             )
             created = self.repo.create(user)
-            logger.success(f"User created successfully (ID: {created.user_id})")
             return Result.Ok(created, message="User created successfully", code=201)
-        except IntegrityError:
+        except Exception as e:
             self.repo.rollback()
-            logger.warning("Duplicate entry detected.")
-            return Result.Fail("Duplicate or invalid user data", code=400)
-        except SQLAlchemyError:
-            self.repo.rollback()
-            logger.exception("Database error while creating user.")
-            return Result.Fail("Database error while creating user", code=500)
+            logger.exception("Error creating user")
+            return Result.Fail(str(e), code=500)
 
     def update_user(self, user_id: int, data: UserUpdate):
         existing = self.get_user_by_id(user_id)

@@ -32,3 +32,957 @@
 2025-11-08 16:25:46 | INFO | app.main:<module>:47 - ✅ InvoAI API started successfully.
 2025-11-08 16:26:56 | INFO | app.main:<module>:33 - ✅ Database tables created and engine initialized.
 2025-11-08 16:26:56 | INFO | app.main:<module>:47 - ✅ InvoAI API started successfully.
+2025-11-08 16:29:59 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:29:59 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:29:59 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:29:59 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (1.22ms)
+2025-11-08 16:29:59 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:29:59 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (7.00ms)
+2025-11-08 16:30:44 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:30:44 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (1.00ms)
+2025-11-08 16:30:44 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:30:44 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (2.54ms)
+2025-11-08 16:30:54 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:30:54 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (0.00ms)
+2025-11-08 16:30:54 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:30:54 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (1.96ms)
+2025-11-08 16:30:59 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:30:59 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (0.00ms)
+2025-11-08 16:30:59 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:30:59 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (2.00ms)
+2025-11-08 16:31:32 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:31:32 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (0.00ms)
+2025-11-08 16:31:32 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:31:32 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (1.00ms)
+2025-11-08 16:31:35 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /api/v1/user/
+2025-11-08 16:31:35 | DEBUG | app.repositories.user_repository:get_all:12 - Querying all non-deleted users from DB.
+2025-11-08 16:31:35 | SUCCESS | app.services.user_service:get_all_users:26 - Fetched 0 active users.
+2025-11-08 16:31:35 | ERROR | app.api.v1.user_routes_v1:get_all_users:32 - Error fetching users.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002CC5CDE1800>
+    └ <WorkerThread(AnyIO worker thread, started 1316)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000002CC625D4220>
+    └ <WorkerThread(AnyIO worker thread, started 1316)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function get_all_users at 0x000002CC624CDF80>, service=<app.services.user_service.UserService object at 0x...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000002CC62595940>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 30, in get_all_users
+    return success_response("Fetched all users successfully.", users)
+           │                                                   └ <app.core.result.Result object at 0x000002CC62334C10>
+           └ <function success_response at 0x000002CC623E2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62334C10>, 'source_outpu...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62334C10>, 'source_outpu...
+    │           │    └ <function JSONResponse.render at 0x000002CC615AAFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x000002CC625F1250>
+    └ <starlette.responses.JSONResponse object at 0x000002CC625F1250>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x000002CC5F198400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62334C10>, 'source_outpu...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62334C10>, 'source_outpu...
+             │    └ <function JSONEncoder.iterencode at 0x000002CC5F198AE0>
+             └ <json.encoder.JSONEncoder object at 0x000002CC626050D0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62334C10>, 'source_outpu...
+           └ <_json.Encoder object at 0x000002CC625CE0E0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:31:35 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /api/v1/user/ - 400 (89.90ms)
+2025-11-08 16:36:13 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /api/v1/user/
+2025-11-08 16:36:13 | DEBUG | app.repositories.user_repository:get_all:12 - Querying all non-deleted users from DB.
+2025-11-08 16:36:13 | SUCCESS | app.services.user_service:get_all_users:26 - Fetched 0 active users.
+2025-11-08 16:36:13 | ERROR | app.api.v1.user_routes_v1:get_all_users:32 - Error fetching users.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002CC5CDE1800>
+    └ <WorkerThread(AnyIO worker thread, started 1316)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000002CC625D4220>
+    └ <WorkerThread(AnyIO worker thread, started 1316)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function get_all_users at 0x000002CC624CDF80>, service=<app.services.user_service.UserService object at 0x...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000002CC6252AD40>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 30, in get_all_users
+    return success_response("Fetched all users successfully.", users)
+           │                                                   └ <app.core.result.Result object at 0x000002CC62601290>
+           └ <function success_response at 0x000002CC623E2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62601290>, 'source_outpu...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62601290>, 'source_outpu...
+    │           │    └ <function JSONResponse.render at 0x000002CC615AAFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x000002CC625E9010>
+    └ <starlette.responses.JSONResponse object at 0x000002CC625E9010>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x000002CC5F198400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62601290>, 'source_outpu...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62601290>, 'source_outpu...
+             │    └ <function JSONEncoder.iterencode at 0x000002CC5F198AE0>
+             └ <json.encoder.JSONEncoder object at 0x000002CC625F2710>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': <app.core.result.Result object at 0x000002CC62601290>, 'source_outpu...
+           └ <_json.Encoder object at 0x000002CC6253CAC0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:36:13 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /api/v1/user/ - 400 (45.01ms)
+2025-11-08 16:38:04 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:38:04 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:38:06 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /api/v1/user/
+2025-11-08 16:38:06 | DEBUG | app.repositories.user_repository:get_all:12 - Querying all non-deleted users from DB.
+2025-11-08 16:38:06 | SUCCESS | app.services.user_service:get_all_users:26 - Fetched 0 active users.
+2025-11-08 16:38:06 | ERROR | app.api.v1.user_routes_v1:get_all_users:32 - Error fetching users.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000025213221800>
+    └ <WorkerThread(AnyIO worker thread, started 19752)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x0000025218A14400>
+    └ <WorkerThread(AnyIO worker thread, started 19752)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function get_all_users at 0x0000025218942520>, service=<app.services.user_service.UserService object at 0x...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x00000252189D72C0>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 30, in get_all_users
+    return success_response("Fetched all users successfully.", users)
+           │                                                   └ Result(success=True, data=[], message='Users fetched successfully', code=200)
+           └ <function success_response at 0x0000025218822480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=True, data=[], message='Users fetched successfully', ...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=True, data=[], message='Users fetched successfully', ...
+    │           │    └ <function JSONResponse.render at 0x00000252179EAFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x0000025218961790>
+    └ <starlette.responses.JSONResponse object at 0x0000025218961790>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x00000252155D8400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=True, data=[], message='Users fetched successfully', ...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=True, data=[], message='Users fetched successfully', ...
+             │    └ <function JSONEncoder.iterencode at 0x00000252155D8AE0>
+             └ <json.encoder.JSONEncoder object at 0x00000252189D6010>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=True, data=[], message='Users fetched successfully', ...
+           └ <_json.Encoder object at 0x000002521898BC40>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:38:06 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /api/v1/user/ - 400 (47.14ms)
+2025-11-08 16:39:09 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:39:09 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 422 (7.00ms)
+2025-11-08 16:39:22 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:39:22 | INFO | app.services.user_service:create_user:42 - Creating user: Manikandan.P
+2025-11-08 16:39:22 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000025213221800>
+    └ <WorkerThread(AnyIO worker thread, started 19752)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x0000025218A14400>
+    └ <WorkerThread(AnyIO worker thread, started 19752)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000002521898DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x0000025218E4AB40>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x000002521898D940>
+               └ <app.services.user_service.UserService object at 0x0000025218E49CD0>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 47, in create_user
+    password_hash=self._hash_password(data.password),
+                  │    │              │    └ '123456'
+                  │    │              └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+                  │    └ <function UserService._hash_password at 0x000002521898D760>
+                  └ <app.services.user_service.UserService object at 0x0000025218E49CD0>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 21, in _hash_password
+    return pwd_context.hash(password)
+           │           │    └ '123456'
+           │           └ <function CryptContext.hash at 0x000002521893FBA0>
+           └ <CryptContext at 0x25218933ed0>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ '123456'
+           │      └ <classmethod(<function GenericHandler.hash at 0x000002521892D440>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ '123456'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x000002521898C540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x00000252189FF490>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x00000252189FF490>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x000002521892F7E0>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x00000252189FF490>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x000002521892F560>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x000002521892F560>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x000002521892F560>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x000002521892F920>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x000002521898C0E0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x0000025218E46DE0>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x000002521898C720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x0000025218E4F710>
+           └ <built-in function compare_digest>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from 'D:\\Manikandan\\E - Manikandan\\Python\\InvoAI\\.venv\\Lib\\site-packages\\bcrypt\\__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-11-08 16:39:23 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (69.25ms)
+2025-11-08 16:42:07 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:07 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:42:09 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:09 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:42:18 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:18 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:42:21 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:21 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:42:46 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:46 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:42:50 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:42:50 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:43:03 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:43:03 | INFO | app.services.user_service:create_user:51 - Creating user: Manikandan.P
+2025-11-08 16:43:03 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x0000024DF6571800>
+    └ <WorkerThread(AnyIO worker thread, started 10176)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x0000024DFBD684A0>
+    └ <WorkerThread(AnyIO worker thread, started 10176)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x0000024DFBCDDC60>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x0000024DFBD6FA40>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x0000024DFBCDD9E0>
+               └ <app.services.user_service.UserService object at 0x0000024DFBD80890>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 56, in create_user
+    password_hash=self._hash_password(data.password),
+                  │    │              │    └ '123456'
+                  │    │              └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+                  │    └ <function UserService._hash_password at 0x0000024DFBCDD760>
+                  └ <app.services.user_service.UserService object at 0x0000024DFBD80890>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 25, in _hash_password
+    return pwd_context.hash(sha256_hashed)
+           │           │    └ '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'
+           │           └ <function CryptContext.hash at 0x0000024DFBC8FBA0>
+           └ <CryptContext at 0x24dfbba0610>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           │      │    │         └ {}
+           │      │    └ '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'
+           │      └ <classmethod(<function GenericHandler.hash at 0x0000024DFBC81440>)>
+           └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+    │    │          │    │              └ '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92'
+    │    │          │    └ <function _NoBackend._calc_checksum at 0x0000024DFBCDC540>
+    │    │          └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x0000024DFBBA0310>
+    │    └ None
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x0000024DFBBA0310>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+    │    └ <classmethod(<function BackendMixin._stub_requires_backend at 0x0000024DFBC837E0>)>
+    └ <passlib.handlers.bcrypt.<customized bcrypt hasher> object at 0x0000024DFBBA0310>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+    │   └ <classmethod(<function BackendMixin.set_backend at 0x0000024DFBC83560>)>
+    └ <class 'passlib.handlers.bcrypt.<customized bcrypt hasher>'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           │     │           │            └ False
+           │     │           └ 'any'
+           │     └ <classmethod(<function BackendMixin.set_backend at 0x0000024DFBC83560>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           │   │           │            └ False
+           │   │           └ 'bcrypt'
+           │   └ <classmethod(<function BackendMixin.set_backend at 0x0000024DFBC83560>)>
+           └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+    │   │            │     └ False
+    │   │            └ 'bcrypt'
+    │   └ <classmethod(<function SubclassBackendMixin._set_backend at 0x0000024DFBC83920>)>
+    └ <class 'passlib.handlers.bcrypt.bcrypt'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+          │                     │                 │     └ False
+          │                     │                 └ 'bcrypt'
+          │                     └ <class 'passlib.handlers.bcrypt.bcrypt'>
+          └ <class 'passlib.utils.handlers.SubclassBackendMixin'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         │        └ {'name': 'bcrypt', 'dryrun': False}
+         └ <bound method _BcryptBackend._load_backend_mixin of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           │         │                       │     └ False
+           │         │                       └ 'bcrypt'
+           │         └ <classmethod(<function _BcryptCommon._finalize_backend_mixin at 0x0000024DFBCDC0E0>)>
+           └ <class 'passlib.handlers.bcrypt._BcryptBackend'>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       │               └ '$2a$'
+       └ <function _BcryptCommon._finalize_backend_mixin.<locals>.detect_wrap_bug at 0x0000024DFBD7F6A0>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+       └ <bound method GenericHandler.verify of <class 'passlib.handlers.bcrypt._BcryptBackend'>>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\utils\handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+           │       │    │              │        └ 'nVyh2niHsGJhayOHLMiXlI45o8/DU.6'
+           │       │    │              └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       │    └ <function _BcryptBackend._calc_checksum at 0x0000024DFBCDC720>
+           │       └ <passlib.handlers.bcrypt._BcryptBackend object at 0x0000024DFBCBAE90>
+           └ <built-in function compare_digest>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\passlib\handlers\bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           │       │      │       └ b'$2a$04$R1lJ2gkNaoPGdafE.H.16.'
+           │       │      └ b'012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012...
+           │       └ <built-in function hashpw>
+           └ <module 'bcrypt' from 'D:\\Manikandan\\E - Manikandan\\Python\\InvoAI\\.venv\\Lib\\site-packages\\bcrypt\\__init__.py'>
+
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-11-08 16:43:03 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (100.60ms)
+2025-11-08 16:52:37 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:52:37 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:52:41 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 16:52:41 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (0.00ms)
+2025-11-08 16:52:41 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 16:52:41 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (8.96ms)
+2025-11-08 16:52:48 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:52:48 | ERROR | app.services.user_service:create_user:63 - Error creating user
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001CC397B1800>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000001CC3EFA45E0>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000001CC3EF1DB20>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000001CC3EF4B400>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x000001CC3EF1D8A0>
+               └ <app.services.user_service.UserService object at 0x000001CC3EFD0E90>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\services\user_service.py", line 55, in create_user
+    password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
+                                │    └ '123456'
+                                └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+
+NameError: name 'hash_password' is not defined
+2025-11-08 16:52:48 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001CC397B1800>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000001CC3EFA45E0>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000001CC3EF1DB20>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000001CC3EF4B400>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 58, in create_user
+    return success_response("User created successfully.", new_user)
+           │                                              └ Result(success=False, data=None, message="name 'hash_password' is not defined", code=500)
+           └ <function success_response at 0x000001CC3EDB2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+    │           │    └ <function JSONResponse.render at 0x000001CC3DF7AFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x000001CC3DF57BD0>
+    └ <starlette.responses.JSONResponse object at 0x000001CC3DF57BD0>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x000001CC3BB68400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+             │    └ <function JSONEncoder.iterencode at 0x000001CC3BB68AE0>
+             └ <json.encoder.JSONEncoder object at 0x000001CC3EFDAF50>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+           └ <_json.Encoder object at 0x000001CC3EFA1900>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:52:48 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (39.28ms)
+2025-11-08 16:52:51 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:52:51 | ERROR | app.services.user_service:create_user:63 - Error creating user
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001CC397B1800>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000001CC3EFA45E0>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000001CC3EF1DB20>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000001CC3F030940>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x000001CC3EF1D8A0>
+               └ <app.services.user_service.UserService object at 0x000001CC3EFC3650>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\services\user_service.py", line 55, in create_user
+    password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
+                                │    └ '123456'
+                                └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+
+NameError: name 'hash_password' is not defined
+2025-11-08 16:52:51 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000001CC397B1800>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x000001CC3EFA45E0>
+    └ <WorkerThread(AnyIO worker thread, started 20064)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000001CC3EF1DB20>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000001CC3F030940>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 58, in create_user
+    return success_response("User created successfully.", new_user)
+           │                                              └ Result(success=False, data=None, message="name 'hash_password' is not defined", code=500)
+           └ <function success_response at 0x000001CC3EDB2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+    │           │    └ <function JSONResponse.render at 0x000001CC3DF7AFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x000001CC3EFC1A90>
+    └ <starlette.responses.JSONResponse object at 0x000001CC3EFC1A90>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x000001CC3BB68400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+             │    └ <function JSONEncoder.iterencode at 0x000001CC3BB68AE0>
+             └ <json.encoder.JSONEncoder object at 0x000001CC3F031650>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+           └ <_json.Encoder object at 0x000001CC3EF179A0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:52:51 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (26.92ms)
+2025-11-08 16:53:59 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:54:00 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 16:54:03 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 16:54:03 | ERROR | app.services.user_service:create_user:62 - Error creating user
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002482E011800>
+    └ <WorkerThread(AnyIO worker thread, started 18440)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x0000024833808400>
+    └ <WorkerThread(AnyIO worker thread, started 18440)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000002483377DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000002483380FC00>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x000002483377D940>
+               └ <app.services.user_service.UserService object at 0x00000248337B8C90>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\services\user_service.py", line 54, in create_user
+    password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
+                                │    └ '123456'
+                                └ UserCreate(bio_id=30026427, user_name='Manikandan.P', password='123456', created_by=30026427)
+
+NameError: name 'hash_password' is not defined
+2025-11-08 16:54:03 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x000002482E011800>
+    └ <WorkerThread(AnyIO worker thread, started 18440)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x0000024833808400>
+    └ <WorkerThread(AnyIO worker thread, started 18440)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x000002483377DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x000002483380FC00>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\api\v1\user_routes_v1.py", line 58, in create_user
+    return success_response("User created successfully.", new_user)
+           │                                              └ Result(success=False, data=None, message="name 'hash_password' is not defined", code=500)
+           └ <function success_response at 0x0000024833612480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\Backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+    │           │    └ <function JSONResponse.render at 0x00000248327DAFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x00000248337AA150>
+    └ <starlette.responses.JSONResponse object at 0x00000248337AA150>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x00000248303C8400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+             │    └ <function JSONEncoder.iterencode at 0x00000248303C8AE0>
+             └ <json.encoder.JSONEncoder object at 0x00000248337BA850>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+           └ <_json.Encoder object at 0x0000024833778B20>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 16:54:03 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (29.63ms)
+2025-11-08 16:55:11 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 16:55:11 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 17:30:08 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 17:30:08 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 17:34:34 | INFO | app.main:<module>:36 - ✅ Database tables created and engine initialized.
+2025-11-08 17:34:34 | INFO | app.main:<module>:50 - ✅ InvoAI API started successfully.
+2025-11-08 17:34:34 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /docs
+2025-11-08 17:34:34 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /docs - 200 (1.04ms)
+2025-11-08 17:34:34 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  GET /openapi.json
+2025-11-08 17:34:34 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  GET /openapi.json - 200 (16.61ms)
+2025-11-08 17:35:10 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 17:35:10 | ERROR | app.services.user_service:create_user:62 - Error creating user
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000245C43E1800>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x00000245C9BD4400>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x00000245C9B4DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x00000245C9BDFAC0>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikanda.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x00000245C9B4D940>
+               └ <app.services.user_service.UserService object at 0x00000245C9BDF750>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 54, in create_user
+    password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
+                                │    └ '123456'
+                                └ UserCreate(bio_id=30026427, user_name='Manikanda.P', password='123456', created_by=30026427)
+
+NameError: name 'hash_password' is not defined
+2025-11-08 17:35:10 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000245C43E1800>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x00000245C9BD4400>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x00000245C9B4DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x00000245C9BDFAC0>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 58, in create_user
+    return success_response("User created successfully.", new_user)
+           │                                              └ Result(success=False, data=None, message="name 'hash_password' is not defined", code=500)
+           └ <function success_response at 0x00000245C99E2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+    │           │    └ <function JSONResponse.render at 0x00000245C8BAEFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x00000245C99B1250>
+    └ <starlette.responses.JSONResponse object at 0x00000245C99B1250>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x00000245C6798400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+             │    └ <function JSONEncoder.iterencode at 0x00000245C6798AE0>
+             └ <json.encoder.JSONEncoder object at 0x00000245C9B2A3D0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+           └ <_json.Encoder object at 0x00000245C9BD17E0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 17:35:10 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (70.67ms)
+2025-11-08 17:35:17 | INFO | app.core.exception_handler:log_requests_middleware:17 - ➡️  POST /api/v1/user/
+2025-11-08 17:35:17 | ERROR | app.services.user_service:create_user:62 - Error creating user
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000245C43E1800>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x00000245C9BD4400>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x00000245C9B4DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x00000245C9C6A1C0>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 57, in create_user
+    new_user = service.create_user(payload)
+               │       │           └ UserCreate(bio_id=30026427, user_name='Manikanda.P', password='123456', created_by=30026427)
+               │       └ <function UserService.create_user at 0x00000245C9B4D940>
+               └ <app.services.user_service.UserService object at 0x00000245C9C6B850>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\services\user_service.py", line 54, in create_user
+    password_hash=hash_password(data.password),  # bcrypt encrypted here ✅
+                                │    └ '123456'
+                                └ UserCreate(bio_id=30026427, user_name='Manikanda.P', password='123456', created_by=30026427)
+
+NameError: name 'hash_password' is not defined
+2025-11-08 17:35:17 | ERROR | app.api.v1.user_routes_v1:create_user:60 - Error creating user.
+Traceback (most recent call last):
+
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1002, in _bootstrap
+    self._bootstrap_inner()
+    │    └ <function Thread._bootstrap_inner at 0x00000245C43E1800>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\threading.py", line 1045, in _bootstrap_inner
+    self.run()
+    │    └ <function WorkerThread.run at 0x00000245C9BD4400>
+    └ <WorkerThread(AnyIO worker thread, started 18700)>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 976, in run
+    result = context.run(func, *args)
+             │       │   │      └ ()
+             │       │   └ functools.partial(<function create_user at 0x00000245C9B4DBC0>, service=<app.services.user_service.UserService object at 0x00...
+             │       └ <method 'run' of '_contextvars.Context' objects>
+             └ <_contextvars.Context object at 0x00000245C9C6A1C0>
+
+> File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\api\v1\user_routes_v1.py", line 58, in create_user
+    return success_response("User created successfully.", new_user)
+           │                                              └ Result(success=False, data=None, message="name 'hash_password' is not defined", code=500)
+           └ <function success_response at 0x00000245C99E2480>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\backend\app\utils\common_response.py", line 4, in success_response
+    return JSONResponse(
+           └ <class 'starlette.responses.JSONResponse'>
+
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 178, in __init__
+    super().__init__(content, status_code, headers, media_type, background)
+                     │        │            │        │           └ None
+                     │        │            │        └ None
+                     │        │            └ None
+                     │        └ 200
+                     └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 41, in __init__
+    self.body = self.render(content)
+    │           │    │      └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+    │           │    └ <function JSONResponse.render at 0x00000245C8BAEFC0>
+    │           └ <starlette.responses.JSONResponse object at 0x00000245C9B93250>
+    └ <starlette.responses.JSONResponse object at 0x00000245C9B93250>
+  File "D:\Manikandan\E - Manikandan\Python\InvoAI\.venv\Lib\site-packages\starlette\responses.py", line 181, in render
+    return json.dumps(
+           │    └ <function dumps at 0x00000245C6798400>
+           └ <module 'json' from 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\json\\__init__.py'>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+      │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+      └ {}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             │    │          └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+             │    └ <function JSONEncoder.iterencode at 0x00000245C6798AE0>
+             └ <json.encoder.JSONEncoder object at 0x00000245C9BF2C90>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           │           └ {'response_status': True, 'status_code': 200, 'message': Result(success=False, data=None, message="name 'hash_password' is no...
+           └ <_json.Encoder object at 0x00000245C9B4B6A0>
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+
+TypeError: Object of type Result is not JSON serializable
+2025-11-08 17:35:17 | INFO | app.core.exception_handler:log_requests_middleware:27 - ⬅️  POST /api/v1/user/ - 400 (17.71ms)
