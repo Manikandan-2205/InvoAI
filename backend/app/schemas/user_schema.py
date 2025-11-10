@@ -13,14 +13,16 @@ class UserBase(BaseModel):
     user_name: constr(strip_whitespace=True, min_length=3, max_length=25) = Field(
         ..., description="Unique username"
     )
-
+    
+    class Config:
+        orm_mode = True
 
 # CREATE / UPDATE SCHEMAS
 class UserCreate(UserBase):
     """
     Schema used when creating a new user.
     """
-    password: constr(min_length=6, max_length=250) = Field(...,
+    password: constr(min_length=1, max_length=250) = Field(...,
                                                            description="User password")
     created_by: Optional[int] = Field(None, description="ID of the creator")
 
