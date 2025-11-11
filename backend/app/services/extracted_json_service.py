@@ -7,7 +7,7 @@ from app.core.logger import logger
 from app.repositories.extracted_json_repository import ReturnJsonRepository
 
 
-class ReturnJsonService:
+class OCRExtractionService:
     """
     Business logic layer for ReturnJson operations.
     """

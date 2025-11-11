@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
-from app.services.extracted_json_service import ReturnJsonService
+from app.services.extracted_json_service import OCRExtractionService
 from app.schemas.extracted_json_schema import ReturnJsonCreate, ReturnJsonUpdate
 from app.core.database import get_db
 from app.utils.api_response import ApiResponse
@@ -11,13 +11,13 @@ from app.repositories.extracted_json_repository import ReturnJsonRepository
 router = APIRouter()
 
 
-def get_return_json_service(db: Session = Depends(get_db)) -> ReturnJsonService:
+def get_return_json_service(db: Session = Depends(get_db)) -> OCRExtractionService:
     repo = ReturnJsonRepository(db)
-    return ReturnJsonService(repo)
+    return OCRExtractionService(repo)
 
 
 @router.get("/", summary="Get all return JSON records")
-async def get_all_returns(service: ReturnJsonService = Depends(get_return_json_service)):
+async def get_all_returns(service: OCRExtractionService = Depends(get_return_json_service)):
     try:
         result = await service.get_all_returns()
         return ApiResponse.from_result(result)
@@ -27,7 +27,7 @@ async def get_all_returns(service: ReturnJsonService = Depends(get_return_json_s
 
 
 @router.get("/{return_id}", summary="Get return JSON by ID")
-async def get_return_by_id(return_id: int, service: ReturnJsonService = Depends(get_return_json_service)):
+async def get_return_by_id(return_id: int, service: OCRExtractionService = Depends(get_return_json_service)):
     try:
         result = await service.get_return_by_id(return_id)
         return ApiResponse.from_result(result)
@@ -37,7 +37,7 @@ async def get_return_by_id(return_id: int, service: ReturnJsonService = Depends(
 
 
 @router.post("/", summary="Create return JSON", status_code=status.HTTP_201_CREATED)
-async def create_return(payload: ReturnJsonCreate, service: ReturnJsonService = Depends(get_return_json_service)):
+async def create_return(payload: ReturnJsonCreate, service: OCRExtractionService = Depends(get_return_json_service)):
     try:
         result = await service.create_return(payload)
         return ApiResponse.from_result(result)
@@ -47,7 +47,7 @@ async def create_return(payload: ReturnJsonCreate, service: ReturnJsonService = 
 
 
 @router.put("/{return_id}", summary="Update return JSON")
-async def update_return(return_id: int, payload: ReturnJsonUpdate, service: ReturnJsonService = Depends(get_return_json_service)):
+async def update_return(return_id: int, payload: ReturnJsonUpdate, service: OCRExtractionService = Depends(get_return_json_service)):
     try:
         result = await service.update_return(return_id, payload)
         return ApiResponse.from_result(result)
@@ -57,7 +57,7 @@ async def update_return(return_id: int, payload: ReturnJsonUpdate, service: Retu
 
 
 @router.delete("/{return_id}", summary="Soft delete return JSON", status_code=status.HTTP_204_NO_CONTENT)
-async def delete_return(return_id: int, service: ReturnJsonService = Depends(get_return_json_service)):
+async def delete_return(return_id: int, service: OCRExtractionService = Depends(get_return_json_service)):
     try:
         result = await service.soft_delete_return(return_id)
         return ApiResponse.from_result(result)
