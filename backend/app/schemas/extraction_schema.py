@@ -8,8 +8,11 @@ class ExtractionBase(BaseModel):
     x_max: Optional[int] = None
     y_min: Optional[int] = None
     y_max: Optional[int] = None
-    vendor_id: int
+    vendor_id: Optional[int] = None
     is_deleted: Optional[int] = 0
+
+    class Config:
+        orm_mode = True
 
 class ExtractionCreate(ExtractionBase):
     created_by: Optional[int] = None
@@ -20,8 +23,12 @@ class ExtractionUpdate(BaseModel):
     x_max: Optional[int] = None
     y_min: Optional[int] = None
     y_max: Optional[int] = None
+    vendor_id: Optional[int] = None
+    is_deleted: Optional[int] = None
     updated_by: Optional[int] = None
-    is_deleted: Optional[int] = 0
+
+    class Config:
+        orm_mode = True
 
 class ExtractionResponse(ExtractionBase):
     extraction_id: int
@@ -29,6 +36,3 @@ class ExtractionResponse(ExtractionBase):
     created_at: Optional[datetime] = None
     updated_by: Optional[int] = None
     updated_at: Optional[datetime] = None
-
-    class Config:
-        orm_mode = True

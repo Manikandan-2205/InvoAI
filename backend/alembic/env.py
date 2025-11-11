@@ -4,11 +4,13 @@ from alembic import context
 from dotenv import load_dotenv
 import os
 
+from app.models import extracted_json_model
+
 # Load .env
 load_dotenv()
 
 from app.core.database import Base
-from app.models import user_model, vendor_model, extraction_model, log_model, return_json_model  # import all model files
+from app.models import user_model, vendor_model, extraction_model, log_model  # import all model files
 target_metadata = Base.metadata
 
 config = context.config

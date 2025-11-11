@@ -3,7 +3,7 @@ from sqlalchemy.orm import relationship
 from app.core.database import Base
 
 class ReturnJson(Base):
-    __tablename__ = "tb_inai_return_json"
+    __tablename__ = "tb_inai_extracted_json"
     __table_args__ = {"schema": "invoai"}
 
     return_id = Column(Integer, primary_key=True, index=True)

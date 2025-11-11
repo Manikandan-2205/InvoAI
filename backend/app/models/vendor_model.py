@@ -9,4 +9,6 @@ class Vendor(Base):
     vendor_name = Column(String(100), nullable=False, unique=True)
     created_by = Column(Integer)
     created_at = Column(TIMESTAMP(timezone=False))
+    updated_by = Column(Integer)
+    updated_at = Column(TIMESTAMP(timezone=False))
     is_deleted = Column(Integer, default=0)

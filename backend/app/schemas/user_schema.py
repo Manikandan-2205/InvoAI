@@ -33,13 +33,13 @@ class UserUpdate(UserBase):
     """
     updated_by: Optional[int] = Field(
         None, description="ID of the person updating this record")
-
+    
 
 class PasswordUpdate(BaseModel):
     """
     Schema used when updating only a user's password.
     """
-    password: constr(min_length=6, max_length=250) = Field(...,
+    password: constr(min_length=1, max_length=250) = Field(...,
                                                            description="New password")
     updated_by: Optional[int] = Field(
         None, description="ID of the user performing the password update")
