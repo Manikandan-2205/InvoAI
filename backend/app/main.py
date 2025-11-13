@@ -42,24 +42,24 @@ Base.metadata.create_all(bind=engine)
 logger.info("✅ Database tables created and engine initialized.")
 
 # Route mappings
+app.include_router(auth_route_v1.router, prefix="/api/v1/auth", tags=["auth"])
 app.include_router(user_routes_v1.router, prefix="/api/v1/user", tags=["User"])
 app.include_router(vendor_routes_v1.router,
                    prefix="/api/v1/vendor", tags=["Vendor"])
-app.include_router(extraction_details_route_v1.router,
-                   prefix="/api/v1/extraction-details", tags=["Extraction Details"])
-app.include_router(extracted_json_route_v1.router,
-                   prefix="/api/v1/extracted-json", tags=["Extracted Response"])
-app.include_router(auth_route_v1.router, prefix="/api/v1/auth", tags=["auth"])
+# app.include_router(extraction_details_route_v1.router,
+#                    prefix="/api/v1/extraction-details", tags=["Extraction Details"])
+# app.include_router(extracted_json_route_v1.router,
+#                    prefix="/api/v1/extracted-json", tags=["Extracted Response"])
 
 
-@app.get("/", tags=["Health"], summary="Health Check")
-def root():
-    logger.info("Health check accessed.")
-    return {"message": "InvoAI User Management API is running 🚀"}
+# @app.get("/", tags=["Health"], summary="Health Check")
+# def root():
+#     logger.info("Health check accessed.")
+#     return {"message": "InvoAI User Management API is running 🚀"}
 
 
 @app.get("/docs", include_in_schema=False)
 async def custom_swagger_redirect():
     return RedirectResponse(url="/docs")
 
-logger.info("✅ InvoAI API started successfully.")
+# logger.info("✅ InvoAI API started successfully.")
