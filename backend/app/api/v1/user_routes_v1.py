@@ -32,7 +32,7 @@ async def get_all_users(service: UserService = Depends(get_user_service)):
         return ApiResponse.error(str(e), 500)
 
 
-@router.get("/get-user-details-by-id/{user_id}", summary="Get user by ID")
+@router.get("/get-user-details-by-id", summary="Get user by ID")
 async def get_user_by_id(user_id: int, service: UserService = Depends(get_user_service)):
     try:
         result = await service.get_user_by_id(user_id)
@@ -44,7 +44,7 @@ async def get_user_by_id(user_id: int, service: UserService = Depends(get_user_s
         return ApiResponse.error(str(e), 500)
 
 
-@router.get("/get-user-details-bioid/{bio_id}", summary="Get users by Bio ID")
+@router.get("/get-user-details-bioid", summary="Get users by Bio ID")
 async def get_user_by_bio_id(bio_id: int, service: UserService = Depends(get_user_service)):
     """
     Returns a list of all users with the given Bio ID.
@@ -59,7 +59,7 @@ async def get_user_by_bio_id(bio_id: int, service: UserService = Depends(get_use
         return ApiResponse.error(str(e), 500)
 
 
-@router.post("/create-new-user/", summary="Create new user", status_code=status.HTTP_201_CREATED)
+@router.post("/create-new-user", summary="Create new user", status_code=status.HTTP_201_CREATED)
 async def create_user(payload: UserCreate, service: UserService = Depends(get_user_service)):
     try:
         result = await service.create_user(payload)
@@ -71,7 +71,7 @@ async def create_user(payload: UserCreate, service: UserService = Depends(get_us
         return ApiResponse.error(str(e), 500)
 
 
-@router.put("/update-user-details/{user_id}", summary="Update existing user")
+@router.put("/update-user-details", summary="Update existing user")
 async def update_user(user_id: int, payload: UserUpdate, service: UserService = Depends(get_user_service)):
     try:
 
@@ -84,7 +84,7 @@ async def update_user(user_id: int, payload: UserUpdate, service: UserService = 
         return ApiResponse.error(str(e), 500)
 
 
-@router.patch("/update-password/{user_id}", summary="Update user password")
+@router.patch("/update-password", summary="Update user password")
 async def update_password(user_id: int, payload: PasswordUpdate, service: UserService = Depends(get_user_service)):
     try:
 
@@ -97,7 +97,7 @@ async def update_password(user_id: int, payload: PasswordUpdate, service: UserSe
         return ApiResponse.error(str(e), 500)
 
 
-@router.delete("/delete-user/{user_id}", summary="Soft delete user", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/delete-user", summary="Soft delete user", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_user(user_id: int, service: UserService = Depends(get_user_service)):
     try:
         result = await service.soft_delete_user(user_id)
