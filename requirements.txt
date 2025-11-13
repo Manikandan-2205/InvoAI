@@ -1,5 +1,5 @@
 # =========================================
-# 🚀 InvoAI User Management API Requirements
+# 🚀 InvoAI Package Management API Requirements
 # =========================================
 
 # --- FastAPI Core ---
