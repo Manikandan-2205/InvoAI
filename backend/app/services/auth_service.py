@@ -29,19 +29,25 @@ class AuthService:
 
     async def login(self, payload: LoginRequest) -> Result:
         try:
-            user = await self.repo.verify_user(payload.user_name)
-            if not user:
+            res = await self.repo.get_users_by_username(payload.user_name)
+            if not res.success or not res.data:
                 return Result.Fail("Invalid username or password", code=401)
 
-            if not self.verify_password(payload.password, user.password_hash):
+            matched_user = None
+            for user in res.data:
+                if self.verify_password(payload.password, user.password_hash):
+                    matched_user = user
+                    break
+
+            if not matched_user:
                 return Result.Fail("Invalid username or password", code=401)
 
             login_time = datetime.now()
-            await self.repo.save_login_log(user.user_id, login_time)
+            await self.repo.save_login_log(matched_user.user_id, login_time)
 
             response = LoginResponse(
-                bio_id=user.bio_id,
-                user_name=user.user_name,
+                bio_id=matched_user.bio_id,
+                user_name=matched_user.user_name,
                 login_time=login_time
             )
             return Result.Ok(response.dict(), message="Login successful", code=200)
@@ -50,5 +56,6 @@ class AuthService:
             logger.exception("Database error during login.")
             return Result.Fail("Database error during login", code=500)
         except Exception as e:
-            logger.exception("Unexpected error during login.")
+            logger.exception(str(e))
             return Result.Fail(str(e), code=500)
+

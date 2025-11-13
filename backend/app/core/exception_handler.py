@@ -2,7 +2,7 @@
 
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
-from app.utils.common_response import error_response
+from app.utils.api_response import ApiResponse
 from app.core.logger import logger
 import time
 
@@ -20,7 +20,7 @@ async def log_requests_middleware(request: Request, call_next):
         logger.exception(f"🔥 Unhandled exception in {request.url.path}: {exc}")
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content=error_response("Internal server error", code=500).dict(),
+            content=ApiResponse.error("Internal server error", code=500).dict(),
         )
 
     process_time = (time.time() - start_time) * 1000

@@ -2,58 +2,51 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.models.extraction_model import Extraction
 from app.repositories.base_repository import BaseRepository
 from app.core.logger import logger
+from app.core.result import Result
 
 
 class ExtractionRepository(BaseRepository):
     """
     Handles all database-level operations for Extraction entity.
+    Logging is limited to exceptions only.
     """
 
-    async def get_all(self):
-        logger.info("Fetching all non-deleted extractions.")
+    async def get_all(self) -> Result:
         try:
             extractions = self.db.query(Extraction).filter(Extraction.is_deleted == 0).all()
-            logger.success(f"Fetched {len(extractions)} extractions successfully.")
-            return extractions
+            return Result.Ok(data=extractions)
         except SQLAlchemyError:
             logger.exception("Database error while fetching extractions.")
-            raise
+            return Result.Fail("Database error while fetching extractions", code=500)
 
-    async def get_by_id(self, extraction_id: int):
-        logger.info(f"Fetching extraction by ID: {extraction_id}")
+    async def get_by_id(self, extraction_id: int) -> Result:
         try:
             extraction = self.db.query(Extraction).filter(
                 Extraction.extraction_id == extraction_id, Extraction.is_deleted == 0).first()
             if not extraction:
-                logger.warning(f"Extraction {extraction_id} not found.")
-            else:
-                logger.success(f"Extraction {extraction_id} fetched successfully.")
-            return extraction
+                return Result.Fail(f"Extraction {extraction_id} not found", code=404)
+            return Result.Ok(data=extraction)
         except SQLAlchemyError:
             logger.exception(f"Database error while fetching extraction {extraction_id}.")
-            raise
+            return Result.Fail("Database error while fetching extraction", code=500)
 
-    async def create(self, extraction: Extraction):
-        logger.info(f"Creating extraction: {extraction.extraction_name}")
+    async def create(self, extraction: Extraction) -> Result:
         try:
             self.add(extraction)
             self.commit()
             self.refresh(extraction)
-            logger.success(f"Extraction {extraction.extraction_id} created.")
-            return extraction
+            return Result.Ok(data=extraction)
         except SQLAlchemyError:
             self.rollback()
             logger.exception("Error creating extraction.")
-            raise
+            return Result.Fail("Database error while creating extraction", code=500)
 
-    async def update(self, extraction: Extraction):
-        logger.info(f"Updating extraction: {extraction.extraction_id}")
+    async def update(self, extraction: Extraction) -> Result:
         try:
             self.commit()
             self.refresh(extraction)
-            logger.success(f"Extraction {extraction.extraction_id} updated.")
-            return extraction
+            return Result.Ok(data=extraction)
         except SQLAlchemyError:
             self.rollback()
             logger.exception("Error updating extraction.")
-            raise
+            return Result.Fail("Database error while updating extraction", code=500)

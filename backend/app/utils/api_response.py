@@ -2,7 +2,6 @@ from fastapi.responses import JSONResponse
 from fastapi import status
 from fastapi.encoders import jsonable_encoder
 
-
 class ApiResponse:
     @staticmethod
     def success(message="Success", code=status.HTTP_200_OK, data=None):

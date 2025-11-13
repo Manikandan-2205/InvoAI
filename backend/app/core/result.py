@@ -1,26 +1,14 @@
-from fastapi import status
-from pydantic import BaseModel
-from typing import Any, Optional
+class Result:
+    def __init__(self, success: bool, message: str = "", data=None, code: int = 200):
+        self.success = success
+        self.message = message
+        self.data = data
+        self.code = code
 
+    @staticmethod
+    def Ok(data=None, message="Success", code=200):
+        return Result(True, message, data, code)
 
-class Result(BaseModel):
-    success: bool
-    data: Optional[Any] = None
-    message: str = ""
-    code: int = status.HTTP_200_OK
-
-    @classmethod
-    def Ok(cls, data=None, message: str = "Success", code: int = status.HTTP_200_OK):
-        return cls(success=True, data=data, message=message, code=code)
-
-    @classmethod
-    def Fail(cls, message: str = "Error", code: int = status.HTTP_400_BAD_REQUEST):
-        return cls(success=False, data=None, message=message, code=code)
-
-    def to_response(self):
-        """Convert Result to ApiResponse automatically"""
-        from app.utils.api_response import ApiResponse
-        if self.success:
-            return ApiResponse.success(self.data, self.message, self.code)
-        else:
-            return ApiResponse.error(self.message, self.code, self.data)
+    @staticmethod
+    def Fail(message="Error", code=400, data=None):
+        return Result(False, message, data, code)

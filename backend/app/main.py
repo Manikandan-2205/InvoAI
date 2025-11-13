@@ -41,7 +41,6 @@ app.add_middleware(RequestContextLogMiddleware)
 Base.metadata.create_all(bind=engine)
 logger.info("✅ Database tables created and engine initialized.")
 
-
 # Route mappings
 app.include_router(user_routes_v1.router, prefix="/api/v1/user", tags=["User"])
 app.include_router(vendor_routes_v1.router,
