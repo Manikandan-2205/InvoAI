@@ -1,0 +1,59 @@
+{% extends "layout/base.html" %} {% block title %}Dashboard{% endblock %}
+{%block extra_css %} {% endblock %} {% block content %}
+<div class="page-header">
+  <h1 class="page-title">Vendor Bill & Invoice Extraction</h1>
+  <p class="page-description">
+    Extract vendor bill and invoice details using OCR technology
+  </p>
+</div>
+
+<div class="card">
+  <h3 class="card-title">Project Overview</h3>
+  <p>
+    This system allows you to extract vendor bill and invoice details using
+    Optical Character Recognition (OCR) technology. The sidebar provides access
+    to all the necessary modules for user management, vendor management, and
+    extraction tools.
+  </p>
+</div>
+
+<div class="card">
+  <h3 class="card-title">Recent Activities</h3>
+  <ul>
+    <li>Vendor mapping updated for ABC Suppliers</li>
+    <li>15 invoices processed successfully</li>
+    <li>New user account created for Jane Smith</li>
+    <li>System maintenance completed</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h3 class="card-title">Quick Stats</h3>
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="p-3 border rounded text-center">
+        <h4>245</h4>
+        <p class="mb-0">Processed Invoices</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="p-3 border rounded text-center">
+        <h4>32</h4>
+        <p class="mb-0">Active Vendors</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="p-3 border rounded text-center">
+        <h4>12</h4>
+        <p class="mb-0">System Users</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6 mb-3">
+      <div class="p-3 border rounded text-center">
+        <h4>98.5%</h4>
+        <p class="mb-0">Accuracy Rate</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% block extra_js %} {% endblock %} {% endblock %}

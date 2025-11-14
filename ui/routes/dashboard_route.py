@@ -1,13 +1,10 @@
 from flask import Blueprint, render_template
+from services.auth import login_required
 
-dashboard_bp = Blueprint("dashboard", __name__)
+dashboard_bp = Blueprint("dashboard", __name__, url_prefix="/dashboard")
 
-@dashboard_bp.route("/")
-def index():
-    # Dummy response structure to prevent template errors
-    response = {
-        "response_status": False,
-        "message": "No vendors found.",
-        "source_output": []
-    }
-    return render_template("dashboard.html", response=response)
+
+@dashboard_bp.route("/index")
+@login_required
+def dashboard():
+    return render_template("layout/dashboard.html")

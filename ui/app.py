@@ -1,11 +1,13 @@
 from flask import Flask
-from routes import register_routes
+from routes.register_routes import register_routes
+from dotenv import load_dotenv
+import os
 
 app = Flask(__name__)
-app.secret_key = "invoai_secret_key"  # for sessions or CSRF if needed
 
-# Register all route blueprints dynamically
+load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY")
+
 register_routes(app)
-
 if __name__ == "__main__":
     app.run(port=5000, debug=True)

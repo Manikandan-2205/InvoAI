@@ -2,34 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>InvoAI</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <!-- Custom CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Bill & Invoice Extraction</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
      {% block extra_css %}{% endblock %}
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
-        <a class="navbar-brand text-white fw-bold" href="/">InvoAI</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link text-white" href="/">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/vendor/">Vendors</a></li>
-                <li class="nav-item"><a class="nav-link text-white" href="/logout">Logout</a></li>
-            </ul>
+   <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-file-invoice-dollar logo-icon"></i>
+                <span class="logo-text">Invoice Extraction</span>
+            </div>
+            <button class="toggle-btn" id="toggleSidebar">
+                <i class="fas fa-chevron-left"></i>
+            </button>
         </div>
-    </nav>
+        
+        <div class="sidebar-menu">
+            <div class="menu-title">Main Menu</div>
+            
+            <!-- User Menu -->
+            <div class="menu-item has-submenu" id="userMenu">
+                <a href="#" class="menu-link">
+                    <i class="fas fa-users menu-icon"></i>
+                    <span class="menu-text">User</span>
+                </a>
+                <div class="submenu" id="userSubmenu">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-plus menu-icon"></i>
+                        <span class="menu-text">New User</span>
+                    </a>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-list menu-icon"></i>
+                        <span class="menu-text">User Master</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Vendor Menu -->
+            <div class="menu-item has-submenu" id="vendorMenu">
+                <a href="#" class="menu-link">
+                    <i class="fas fa-store menu-icon"></i>
+                    <span class="menu-text">Vendor</span>
+                </a>
+                <div class="submenu" id="vendorSubmenu">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-plus menu-icon"></i>
+                        <span class="menu-text">New Vendor</span>
+                    </a>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-list menu-icon"></i>
+                        <span class="menu-text">Vendor Master</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Extractor Menu -->
+            <div class="menu-item has-submenu" id="extractorMenu">
+                <a href="#" class="menu-link">
+                    <i class="fas fa-cogs menu-icon"></i>
+                    <span class="menu-text">Extractor</span>
+                </a>
+                <div class="submenu" id="extractorSubmenu">
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-map menu-icon"></i>
+                        <span class="menu-text">Vendor File Mapping</span>
+                    </a>
+                    <a href="#" class="menu-link">
+                        <i class="fas fa-file-extract menu-icon"></i>
+                        <span class="menu-text">Details Extractor</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar">JD</div>
+                <div class="user-details">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Administrator</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main class="container mt-4">
         {% block content %}{% endblock %}
     </main>
-    
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
      {% block extra_js %}{% endblock %}
 </body>
