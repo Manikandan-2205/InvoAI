@@ -34,8 +34,9 @@ $(document).ready(function () {
                 role: role
             },
             success: function (response) {
+                console.log(response);
                 if (response.isSuccess) {
-                    window.location.href = 'dashboard';
+                    window.location.href = response.url;
                 } else {
                     alert(response.message);
                 }

@@ -4,7 +4,8 @@ from services.auth import set_claims
 auth_bp = Blueprint("auth", __name__,url_prefix="/auth")
 
 @auth_bp.route("/login", methods=["GET", "POST"])
-async def login():
+def login():
+    print("login route")
     if request.method == "POST":
         username = request.form.get("username")
         role = request.form.get("role", "user")
@@ -13,7 +14,8 @@ async def login():
             set_claims(username, role)
             return jsonify({
                 "isSuccess": True,
-                "message": "Login successful"
+                "message": "Login successful",
+                "url": "/dashboard/index"
             }), 200
         else:
             return jsonify({
@@ -22,3 +24,4 @@ async def login():
             }), 400
 
     return render_template("auth/login.html")
+

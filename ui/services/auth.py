@@ -18,7 +18,7 @@ def is_expired():
 
 def login_required(f):
     @wraps(f)
-    def decorated_function(*args, **kwargs):
+    def decorated_function(*args, **kwargs):        
         if not is_authenticated():
             return redirect(url_for("auth.login"))
         return f(*args, **kwargs)
