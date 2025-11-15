@@ -24,21 +24,23 @@ $(document).ready(function () {
         e.preventDefault();
 
         const username = $('#username').val();
-        const role = 'user'; // or fetch from a dropdown
-
+        const password = $('#password').val();
+        const remberme = $('#remberme').is(':checked');
+        
         $.ajax({
             url: '/auth/login',
             method: 'POST',
             data: {
                 username: username,
-                role: role
+                password: password,
+                remberme: remberme
             },
             success: function (response) {
                 console.log(response);
                 if (response.isSuccess) {
                     window.location.href = response.url;
                 } else {
-                    alert(response.message);
+                   $('#login-error').text(response.message).show();
                 }
             },
             error: function (xhr) {

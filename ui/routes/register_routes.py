@@ -14,6 +14,7 @@ def register_routes(app):
     def inject_now():
         # Pass the RESULT (the object).
         return {'now': datetime.now()}
+        
 
     # Register each blueprint with the app
     app.register_blueprint(dashboard_bp)
