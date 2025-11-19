@@ -104,14 +104,36 @@
             </a>
           </div>
         </div>
+
+        <!-- Account Menu - Corrected -->
+        <div class="menu-item account-menu" id="accountMenu">
+          <a href="#" class="menu-link" data-menu="account">
+            <i class="fas fa-user-circle menu-icon"></i>
+            <span class="menu-text">User</span>
+          </a>
+          <div class="account-dropdown" id="accountDropdown">
+            <a href="#" class="menu-link" data-menu="new_user">
+              <i class="fas fa-user-plus menu-icon"></i>
+              <span class="menu-text">New User</span>
+            </a>
+            <a href="#" class="menu-link" data-menu="user_list">
+              <i class="fas fa-users menu-icon"></i>
+              <span class="menu-text">User List</span>
+            </a>
+            <a href="#" class="menu-link" data-menu="user_logs">
+              <i class="fas fa-user-clock menu-icon"></i>
+              <span class="menu-text">User Logs</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <div class="sidebar-footer">
         <div class="user-info" id="userInfoToggle">
-          <div class="user-avatar">{{ session['avatar'] }}</div>
+          <div class="user-avatar">JD</div>
           <div class="user-details">
-            <div class="user-name">{{ session['username'] }}</div>
-            <div class="user-role">{{ session['role'] }}</div>
+            <div class="user-name">John Doe</div>
+            <div class="user-role">Administrator</div>
           </div>
         </div>
         <!-- User Menu Dropdown -->
