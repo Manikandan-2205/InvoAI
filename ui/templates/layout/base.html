@@ -140,7 +140,7 @@
 
     <script src="{{ url_for('static', filename='lib/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}?v={{ now }}"></script>
     {% block extra_js %}{% endblock %}
   </body>
 </html>
