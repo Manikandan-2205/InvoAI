@@ -15,6 +15,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='lib/sweetalter2/sweetalert2.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
 
@@ -50,7 +54,7 @@
             <span class="menu-text">Vendor</span>
           </a>
           <div class="submenu" id="vendorSubmenu">
-            <a href="#" class="menu-link" data-menu="new_vendor">
+            <a href="/vendor/new-vendor" class="menu-link" data-menu="new_vendor">
               <i class="fas fa-plus menu-icon"></i>
               <span class="menu-text">New Vendor</span>
             </a>
@@ -162,6 +166,7 @@
 
     <script src="{{ url_for('static', filename='lib/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/sweetalter2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}?v={{ now }}"></script>
     {% block extra_js %}{% endblock %}
   </body>

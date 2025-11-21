@@ -10,8 +10,8 @@ def get_all_vendors():
     return render_template("vendor/vendor_list.html")
 
 
-@vendor_bp.route("/add-vendor", methods=["GET", "POST"])
-def add_vendor(id: int = None):
+@vendor_bp.route("/new-vendor", methods=["GET", "POST"])
+def add_vendor():   
     if request.method == "POST":
         vendor_name = request.form.get("vendor_name")
         if not vendor_name:
@@ -32,7 +32,7 @@ def add_vendor(id: int = None):
                 "message": result.message
             }), result.code
 
-    return render_template("vendor/add_vendor.html")
+    return render_template("vendor/new_vendor.html")
 
 
 @vendor_bp.route("/edit-vendor/<int:id>", methods=["GET", "POST"])
@@ -41,11 +41,11 @@ def edit_vendor(id: int = None):
         if id is not None:
             result = vendor_client.get_vendor_by_id(id)
             if result.success:
-                return render_template("vendor/add_vendor.html", vendor=result.data.get("vendor"))
+                return render_template("vendor/new_vendor.html", vendor=result.data.get("vendor"))
             else:
                 return jsonify({
                     "isSuccess": False,
                     "message": result.message
                 }), result.code
         else:
-            return render_template("vendor/add_vendor.html")
+            return render_template("vendor/new_vendor.html")

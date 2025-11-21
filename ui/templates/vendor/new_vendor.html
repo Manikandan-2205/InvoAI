@@ -1,15 +1,57 @@
 {% extends "layout/base.html" %}
 
-{% block title %}New Vendor - InvoiceAI{% endblock %}
+{% block title %}{% if vendor %}Edit Vendor{% else %}New Vendor{% endif %} - InvoiceAI{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/new_vendor.css') }}">
 {% endblock %}
 
 {% block content %}
-
+<div class="vendor-container">
+    <div class="vendor-header">
+        <h1>{% if vendor %}Edit Vendor{% else %}Create New Vendor{% endif %}</h1>
+        <p>{% if vendor %}Update vendor information{% else %}Add a new vendor to your system{% endif %}</p>
+    </div>
+    
+    <div class="vendor-form-container">
+        <form id="newVendorForm" class="vendor-form">
+            {% if vendor %}
+            <input type="hidden" id="vendorId" name="vendor_id" value="{{ vendor.id }}">
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="vendorName" class="form-label">Vendor Name *</label>
+                <input 
+                    type="text" 
+                    id="vendorName" 
+                    name="vendor_name" 
+                    class="form-input" 
+                    placeholder="Enter vendor name"
+                    value="{% if vendor %}{{ vendor.name }}{% endif %}"
+                    required
+                    maxlength="255"
+                >
+                <div id="vendorNameError" class="error-message"></div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn-cancel" onclick="window.history.back()">
+                    Cancel
+                </button>
+                <button type="submit" class="btn-submit" id="submitBtn">
+                    <span class="btn-text">
+                        {% if vendor %}Update Vendor{% else %}Create Vendor{% endif %}
+                    </span>
+                    <div class="btn-loader" style="display: none;">
+                        <div class="spinner"></div>
+                    </div>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
 
- {% block extra_js %}
- <script src="{{ url_for('static', filename='js/vendor/new_vendor.js') }}"></script>
- {% endblock %}
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/vendor/new_vendor.js') }}"></script>
+{% endblock %}
