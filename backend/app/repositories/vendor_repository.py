@@ -13,7 +13,7 @@ class VendorRepository(BaseRepository):
 
     async def get_all(self) -> Result:
         try:
-            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).all()
+            vendors = self.db.query(Vendor).all()
             return Result.Ok(data=vendors)
         except SQLAlchemyError:
             logger.exception("Database error while fetching all vendors.")

@@ -4,11 +4,6 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/vendor/vendor_list.css') }}">
-<!-- DataTables CSS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
 {% endblock %}
 
 {% block content %}
@@ -21,49 +16,28 @@
             </button>
         </div>
         
-        <!-- Loading Spinner -->
-        <div id="loadingSpinner" class="loading-spinner">
-            <div class="spinner"></div>
-            <p>Loading vendor data...</p>
-        </div>
-        
-        <!-- Error Message Container -->
         <div id="errorMessage" class="alert alert-danger" style="display: none; margin-bottom: 20px;">
             <i class="fas fa-exclamation-triangle"></i> <span id="errorText"></span>
         </div>
         
-        <!-- DataTable -->
-        <table id="vendorsTable" class="display responsive nowrap" style="width:100%; display: none;">
+        <table id="vendorsTable" class="display responsive nowrap" style="width:100%;">
             <thead>
                 <tr>
                     <th>S.No</th>
                     <th>Vendor Name</th>
                     <th>Created By</th>
+                    <th>Status</th> 
                     <th>Created Time</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Data will be populated dynamically -->
-            </tbody>
+               </tbody>
         </table>
-        
-        <!-- Empty State (hidden by default) -->
-        <div id="emptyState" class="empty-state" style="display: none;">
-            <div class="empty-state-icon">
-                <i class="fas fa-users-slash"></i>
-            </div>
-            <h3>No Vendors Found</h3>
-            <p>There are no vendors available. Click "Add New Vendor" to create your first vendor.</p>
-        </div>
     </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script src="{{ url_for('static', filename='js/vendor/vendor_list.js') }}"></script>
-<!-- jQuery and DataTables JS -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 {% endblock %}

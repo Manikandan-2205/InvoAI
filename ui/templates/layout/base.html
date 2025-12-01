@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vendor Bill & Invoice Extraction</title>
-
+    <link rel="icon" href="static/images/site/chat.png" type="image/x-icon" />
     <link
       href="{{ url_for('static', filename='lib/fontawesome/css/all.min.css') }}"
       rel="stylesheet"
@@ -24,6 +24,27 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <!-- DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css"
     />
 
     {% block extra_css %}{% endblock %}
@@ -58,11 +79,19 @@
             <span class="menu-text">Vendor</span>
           </a>
           <div class="submenu" id="vendorSubmenu">
-            <a href="/vendor/new-vendor" class="menu-link" data-menu="new_vendor">
+            <a
+              href="/vendor/new-vendor"
+              class="menu-link"
+              data-menu="new_vendor"
+            >
               <i class="fas fa-plus menu-icon"></i>
               <span class="menu-text">New Vendor</span>
             </a>
-            <a href="/vendor/get-all-vendors" class="menu-link" data-menu="vendor_master">
+            <a
+              href="/vendor/get-all-vendors"
+              class="menu-link"
+              data-menu="vendor_master"
+            >
               <i class="fas fa-list menu-icon"></i>
               <span class="menu-text">Vendor Master</span>
             </a>
@@ -138,12 +167,13 @@
 
       <div class="sidebar-footer">
         <div class="user-info" id="userInfoToggle">
-          <div class="user-avatar">JD</div>
+          <div class="user-avatar">{{ session['avatar'] }}</div>
           <div class="user-details">
-            <div class="user-name">John Doe</div>
-            <div class="user-role">Administrator</div>
+            <div class="user-name">{{ session['username'] }}</div>
+            <div class="user-role">{{ session['role'] }}</div>
           </div>
         </div>
+
         <!-- User Menu Dropdown -->
         <div class="user-menu" id="userMenu">
           <a href="#" class="user-menu-item">
@@ -170,7 +200,7 @@
 
     <script src="{{ url_for('static', filename='lib/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    
+
     <!-- Ajax -->
     <script src="{{ url_for('static', filename='js/common/ajax.js') }}"></script>
 

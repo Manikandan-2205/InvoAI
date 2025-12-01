@@ -37,7 +37,7 @@ def login():
                 set_claims(
                     user_id=30026427,
                     role=user_data["role"],
-                    avatar=username[:2].upper(),  # initials for avatar
+                    avatar=username[:2].upper(),  
                     username=username,
                     remember=remember
                 )
