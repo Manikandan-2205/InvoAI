@@ -44,3 +44,16 @@ def login_required(f):
 
 def has_role(required_role):
     return session.get("role") == required_role
+
+def allow_access(*roles):
+    def wrapper(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            if not is_authenticated():
+                return redirect(url_for("auth.login"))
+            if roles and session.get("role") not in roles:
+                return redirect(url_for("dashboard.dashboard"))  # or 403
+            return f(*args, **kwargs)
+        return decorated_function
+    return wrapper
+

@@ -35,7 +35,7 @@ def login():
             user_data = user_master[username]
             if password == user_data["password"]:
                 set_claims(
-                    user_id=username,
+                    user_id=30026427,
                     role=user_data["role"],
                     avatar=username[:2].upper(),  # initials for avatar
                     username=username,

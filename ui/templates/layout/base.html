@@ -15,6 +15,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='lib/datatable/dataTables.bootstrap5.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='lib/sweetalter2/sweetalert2.min.css') }}"
     />
     <link
@@ -58,7 +62,7 @@
               <i class="fas fa-plus menu-icon"></i>
               <span class="menu-text">New Vendor</span>
             </a>
-            <a href="#" class="menu-link" data-menu="vendor_master">
+            <a href="/vendor/get-all-vendors" class="menu-link" data-menu="vendor_master">
               <i class="fas fa-list menu-icon"></i>
               <span class="menu-text">Vendor Master</span>
             </a>
@@ -166,6 +170,14 @@
 
     <script src="{{ url_for('static', filename='lib/jquery/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    
+    <!-- Ajax -->
+    <script src="{{ url_for('static', filename='js/common/ajax.js') }}"></script>
+
+    <!-- DataTable -->
+    <script src="{{ url_for('static', filename='lib/datatable/dataTables.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/datatable/dataTables.bootstrap5.js') }}"></script>
+
     <script src="{{ url_for('static', filename='lib/sweetalter2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}?v={{ now }}"></script>
     {% block extra_js %}{% endblock %}

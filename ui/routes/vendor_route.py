@@ -1,16 +1,37 @@
+import time
 from flask import Blueprint, redirect, request, render_template, jsonify, session, url_for
-from services.auth import remove_claims, set_claims
+from services.auth import login_required, remove_claims, set_claims
 from api import vendor_client
 
 vendor_bp = Blueprint("vendor", __name__, url_prefix="/vendor")
 
 
-@vendor_bp.route("/get-all-vendors", methods=["GET", "POST"])
+@vendor_bp.route("/get-all-vendors", methods=["GET"])
+@login_required
 def get_all_vendors():
     return render_template("vendor/vendor_list.html")
 
+@vendor_bp.route("/get-all-vendors-data", methods=["GET"])
+@login_required
+def get_all_vendors_data():
+    # time.sleep(5)
+    try:
+        result = vendor_client.get_vendor_list()
+        if result.success:
+            return jsonify({
+                "isSuccess": True,
+                "data": result.data
+            }), 200
+    except Exception as e:
+        return jsonify({
+            "isSuccess": False,
+            "message": str(e)
+        }), 500
+
+
 
 @vendor_bp.route("/new-vendor", methods=["GET", "POST"])
+@login_required
 def add_vendor():   
     if request.method == "POST":
         vendor_name = request.form.get("vendor_name")
@@ -19,7 +40,9 @@ def add_vendor():
                 "isSuccess": False,
                 "message": "Vendor name is required"
             }), 400
-        result = vendor_client.add_vendor(vendor_name)
+        
+        result = vendor_client.add_vendor(vendor_name,session.get("user_id"))
+        
         if result.success:
             return jsonify({
                 "isSuccess": True,
@@ -36,6 +59,7 @@ def add_vendor():
 
 
 @vendor_bp.route("/edit-vendor/<int:id>", methods=["GET", "POST"])
+@login_required
 def edit_vendor(id: int = None):
     if request.method == "GET":
         if id is not None:

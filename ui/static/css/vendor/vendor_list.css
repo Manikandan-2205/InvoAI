@@ -1,0 +1,272 @@
+.vendor-table-container {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.vendor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.vendor-header h1 {
+    color: var(--dark-bg);
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.btn-add-vendor {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add-vendor:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+table.dataTable {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+}
+
+table.dataTable thead th {
+    background-color: rgba(102, 126, 234, 0.1);
+    color: var(--dark-bg);
+    font-weight: 600;
+    border-bottom: 2px solid var(--primary-color);
+    padding: 15px 10px;
+}
+
+table.dataTable tbody td {
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    vertical-align: middle;
+}
+
+table.dataTable tbody tr {
+    transition: background-color var(--transition-speed);
+}
+
+table.dataTable tbody tr:hover {
+    background-color: rgba(79, 209, 199, 0.05);
+}
+
+table.dataTable tbody tr.selected {
+    background-color: rgba(102, 126, 234, 0.1);
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_length select,
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 10px;
+    outline: none;
+}
+
+.dataTables_wrapper .dataTables_length select:focus,
+.dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 4px !important;
+    margin: 0 3px !important;
+    border: 1px solid transparent !important;
+    color: var(--dark-bg) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-color) !important;
+    color: white !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: rgba(102, 126, 234, 0.1) !important;
+    border: 1px solid rgba(102, 126, 234, 0.3) !important;
+    color: var(--dark-bg) !important;
+}
+
+
+.loading-spinner {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    color: var(--primary-color);
+}
+
+.spinner {
+    border: 4px solid rgba(102, 126, 234, 0.2);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-edit {
+    background-color: rgba(79, 209, 199, 0.1);
+    color: var(--accent-color);
+}
+
+.btn-edit:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: rgba(245, 101, 101, 0.1);
+    color: #f56565;
+}
+
+.btn-delete:hover {
+    background-color: #f56565;
+    color: white;
+}
+
+.btn-view {
+    background-color: rgba(102, 126, 234, 0.1);
+    color: var(--primary-color);
+}
+
+.btn-view:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-active {
+    background-color: rgba(72, 187, 120, 0.1);
+    color: #48bb78;
+}
+
+.status-inactive {
+    background-color: rgba(160, 174, 192, 0.1);
+    color: var(--text-muted);
+}
+
+.status-deleted {
+    background-color: rgba(245, 101, 101, 0.1);
+    color: #f56565;
+}
+
+
+.sno-cell {
+    font-weight: 600;
+    color: var(--dark-bg);
+    text-align: center;
+    width: 60px;
+}
+
+
+.created-time {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+
+@media (max-width: 768px) {
+    .vendor-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .created-time {
+        white-space: normal;
+        font-size: 12px;
+    }
+}
+
+
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+}
+
+.empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #cbd5e0;
+}
+
+.empty-state h3 {
+    color: var(--dark-bg);
+    margin-bottom: 10px;
+}
