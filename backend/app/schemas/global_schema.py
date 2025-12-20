@@ -7,5 +7,5 @@ class BaseEntry(BaseModel):
         from_attributes = True
 
 
-class vendorMaster(BaseEntry):
+class GlobalVendorList(BaseEntry):
     vendor_name: str = Field(..., max_length=100)

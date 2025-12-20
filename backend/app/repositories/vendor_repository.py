@@ -13,12 +13,20 @@ class VendorRepository(BaseRepository):
     """
 
     async def get_all(self) -> Result:
-        try:
+        try:            
             vendors = self.db.query(Vendor).order_by(desc(Vendor.id)).all()
             return Result.Ok(data=vendors)
         except SQLAlchemyError:
             logger.exception("Database error while fetching all vendors.")
             return Result.Fail("Database error while fetching vendors", code=500)
+        
+    async def active_vendors(self) -> Result:
+        try:            
+            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).order_by(desc(Vendor.id)).all()
+            return Result.Ok(data=vendors)
+        except SQLAlchemyError:
+            logger.exception("Database error while fetching active vendors.")
+            return Result.Fail("Database error while fetching active vendors", code=500)    
 
     async def get_by_id(self, vendor_id: int) -> Result:
         try:
@@ -50,4 +58,5 @@ class VendorRepository(BaseRepository):
         except SQLAlchemyError:
             self.rollback()
             logger.exception(f"Database error while updating vendor {vendor.vendor_id}.")
-            return Result.Fail("Database error while updating vendor", code=500)
+            return Result.Fail("Database error while updating vendor", code=500)     
+    

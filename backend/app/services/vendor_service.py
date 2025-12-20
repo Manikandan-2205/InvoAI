@@ -6,6 +6,8 @@ from app.core.result import Result
 from app.core.logger import logger
 from app.repositories.vendor_repository import VendorRepository
 
+from app.schemas.global_schema import GlobalVendorList
+
 
 class VendorService:
     def __init__(self, repo: VendorRepository):
@@ -14,7 +16,6 @@ class VendorService:
     async def get_all_vendors(self) -> Result:
         try:
             vendors = await self.repo.get_all()
-
             if not vendors.success or not vendors.data:
                 return Result.Fail("No vendors found", code=404)
             
@@ -114,4 +115,4 @@ class VendorService:
         except Exception as e:
             self.repo.rollback()
             logger.exception(str(e))
-            return Result.Fail(str(e), code=500)
+            return Result.Fail(str(e), code=500)  

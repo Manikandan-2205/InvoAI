@@ -11,6 +11,7 @@ from app.api.v1 import (user_routes_v1, vendor_routes_v1,
                         auth_route_v1,
                         extraction_details_route_v1)
 from app.api.v1 import extracted_json_route_v1
+from app.api.v1 import global_route_v1
 
 
 app = FastAPI(
@@ -46,6 +47,9 @@ app.include_router(auth_route_v1.router, prefix="/api/v1/auth", tags=["auth"])
 app.include_router(user_routes_v1.router, prefix="/api/v1/user", tags=["User"])
 app.include_router(vendor_routes_v1.router,
                    prefix="/api/v1/vendor", tags=["Vendor"])
+app.include_router(global_route_v1.router,
+                   prefix="/api/v1/global", tags=["Global"])
+
 # app.include_router(extraction_details_route_v1.router,
 #                    prefix="/api/v1/extraction-details", tags=["Extraction Details"])
 # app.include_router(extracted_json_route_v1.router,
