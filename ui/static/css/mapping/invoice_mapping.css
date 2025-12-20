@@ -1,0 +1,91 @@
+.mapping-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: var(--dark-bg);
+  color: var(--text-light);
+}
+
+/* LEFT */
+.document-panel {
+  flex: 2;
+  background: #fff;
+  padding: 12px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.doc-preview {
+  height: 100%;
+  border: 2px dashed var(--primary-color);
+  border-radius: 8px;
+  overflow: auto;
+}
+
+/* RIGHT */
+.mapping-panel {
+  flex: 1.2;
+  padding: 16px;
+  background: var(--sidebar-bg);
+  overflow-y: auto;
+}
+
+.card {
+  background: var(--card-bg);
+  color: #1a202c;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mapping-table th,
+.mapping-table td {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.mapping-table input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e0;
+}
+
+/* BUTTONS */
+.btn-add,
+.btn-select,
+.btn-save {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-save {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-add:hover,
+.btn-select:hover,
+.btn-save:hover {
+  background: var(--primary-dark);
+}

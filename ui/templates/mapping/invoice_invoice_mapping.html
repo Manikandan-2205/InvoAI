@@ -1,0 +1,76 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Invoice Mapping - InvoiceAI{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mapping/invoice_mapping.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="mapping-container">
+
+  <!-- LEFT PANEL -->
+  <div class="document-panel">
+    <div class="doc-header">
+      <h3>Invoice Preview</h3>
+      <input type="file" id="fileInput" accept=".pdf,image/*">
+    </div>
+
+    <div class="doc-preview">
+      <!-- PDF.js or Image will render here -->
+      <canvas id="docCanvas"></canvas>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="mapping-panel">
+
+    <!-- Vendor -->
+    <div class="card">
+      <label>Vendor</label>
+      <select id="vendorSelect">
+        <option value="">Select Vendor</option>
+        {% for vendor in vendors %}
+        <option value="{{ vendor.id }}">{{ vendor.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Mapping Table -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Field Mapping</h3>
+        <button class="btn-add" id="addRowBtn">+ Add Field</button>
+      </div>
+
+      <table class="mapping-table">
+        <thead>
+          <tr>
+            <th>Field Name</th>
+            <th>Coordinates (xmin, ymin, xmax, ymax)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="mappingBody">
+          <tr>
+            <td><input type="text" placeholder="invoice_number"></td>
+            <td>
+              <input type="text" class="coord" readonly>
+            </td>
+            <td>
+              <button class="btn-select">Select</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="btn-save">Save Mapping</button>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/mapping/invoice_mapping.js') }}"></script>
+{% endblock %}

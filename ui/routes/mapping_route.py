@@ -5,14 +5,5 @@ mapping_bp = Blueprint("map", __name__, url_prefix="/map")
 
 
 @mapping_bp.route("/vendor-invoice", methods=["GET", "POST"])
-def login():  
-      
-    return render_template("auth/invoice_invoice_mapping.html")
-
-
-@mapping_bp.route("/vendor-bills", methods=["GET", "POST"])
-def logout():
-    remove_claims()
-       
-    # Redirect back to login page
-    return redirect(url_for("auth.login"))
+def invoice_mapping():        
+    return render_template("mapping/invoice_invoice_mapping.html")
