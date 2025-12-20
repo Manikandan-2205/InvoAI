@@ -14,7 +14,7 @@ class VendorRepository(BaseRepository):
 
     async def get_all(self) -> Result:
         try:            
-            vendors = self.db.query(Vendor).order_by(desc(Vendor.id)).all()
+            vendors = self.db.query(Vendor).order_by(desc(Vendor.vendor_id)).all()
             return Result.Ok(data=vendors)
         except SQLAlchemyError:
             logger.exception("Database error while fetching all vendors.")
@@ -22,7 +22,7 @@ class VendorRepository(BaseRepository):
         
     async def active_vendors(self) -> Result:
         try:            
-            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).order_by(desc(Vendor.id)).all()
+            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).order_by(desc(Vendor.vendor_id)).all()
             return Result.Ok(data=vendors)
         except SQLAlchemyError:
             logger.exception("Database error while fetching active vendors.")

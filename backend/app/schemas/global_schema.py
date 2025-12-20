@@ -1,11 +1,10 @@
-from pydantic import BaseModel,Field
-from typing import Optional,List
+from pydantic import BaseModel, Field
+from typing import Optional
 
-class BaseEntry(BaseModel):
-    id : Optional[int] = Field(None, description= "Id was required.")
+class GlobalVendorList(BaseModel):
+    id: Optional[int] = Field(None, alias="vendor_id")
+    vendor_name: str = Field(..., max_length=100)
+
     class Config:
         from_attributes = True
-
-
-class GlobalVendorList(BaseEntry):
-    vendor_name: str = Field(..., max_length=100)
+        populate_by_name = True

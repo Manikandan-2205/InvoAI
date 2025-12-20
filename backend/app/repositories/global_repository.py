@@ -9,8 +9,8 @@ from sqlalchemy.exc import SQLAlchemyError
 class GlobalRepository(BaseRepository):
 
     async def get_all_vendor(self) -> Result:
-        try:
-            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).order_by(desc(Vendor.id)).all()
+        try:           
+            vendors = self.db.query(Vendor).filter(Vendor.is_deleted == 0).order_by(Vendor.vendor_name).all()           
             return Result.Ok(data=vendors)
         except SQLAlchemyError as ex:
             logger.exception(str(ex))
