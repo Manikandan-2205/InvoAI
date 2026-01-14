@@ -4,12 +4,10 @@ from utils.result import Result
 
 api_base_url = os.getenv("API_BASE_URL")
 
-
-
 def get_vendor_list():
     try:
         with httpx.Client(verify=False, timeout=10.0) as client:
-            response = client.get(f"{api_base_url}/v1/vendor/get-all-vendors")
+            response = client.get(f"{api_base_url}/v1/global/get-all-list")
             response.raise_for_status() 
             if response.status_code == 200:
                 data = response.json()

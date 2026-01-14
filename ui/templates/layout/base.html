@@ -23,6 +23,10 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='lib/select2/select2.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
     <!-- DataTables CSS -->
@@ -209,6 +213,8 @@
     <script src="{{ url_for('static', filename='lib/datatable/dataTables.bootstrap5.js') }}"></script>
 
     <script src="{{ url_for('static', filename='lib/sweetalter2/sweetalert2.all.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/select2/select2.min.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/main.js') }}?v={{ now }}"></script>
     {% block extra_js %}{% endblock %}
   </body>

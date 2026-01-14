@@ -28,11 +28,7 @@
     <!-- Vendor -->
     <div class="card">
       <label>Vendor</label>
-      <select id="vendorSelect">
-        <option value="">Select Vendor</option>
-        {% for vendor in vendors %}
-        <option value="{{ vendor.id }}">{{ vendor.name }}</option>
-        {% endfor %}
+      <select id="vendorSelect" class="select2">       
       </select>
     </div>
 
@@ -72,5 +68,9 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- Optional: Client-side OCR -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script src="{{ url_for('static', filename='js/mapping/invoice_mapping.js') }}"></script>
 {% endblock %}

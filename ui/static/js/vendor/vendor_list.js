@@ -2,8 +2,7 @@ $(document).ready(function () {
     let vendorsTable;
     ajax.get('/vendor/get-all-vendors-data')
         .then(response => {
-            if (response.isSuccess) {
-                console.log('Response:', response);
+            if (response.isSuccess) {              
                 initializeDataTable(response.data);
             } else {
                 console.error('API Error:', response.message);
