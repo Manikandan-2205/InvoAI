@@ -59,6 +59,14 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+.mapping-table tr.active {
+    background-color: #f0f7ff;
+}
+
+#docCanvas {
+    cursor: crosshair;
+}
+
 .mapping-table input {
   width: 100%;
   padding: 6px;

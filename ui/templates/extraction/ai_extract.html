@@ -1,0 +1,199 @@
+{% extends "layout/base.html" %}
+
+{% block title %}AI Document Extraction - InvoAI{% endblock %}
+
+{% block extra_css %}
+<style>
+    .extraction-container {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .upload-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        text-align: center;
+        border: 2px dashed #e0e0e0;
+        transition: all 0.3s ease;
+    }
+    .upload-section:hover {
+        border-color: #4a90e2;
+        background: #f8fbff;
+    }
+    .results-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .preview-card, .data-card {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        min-height: 400px;
+    }
+    #imagePreview {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .json-tree {
+        font-family: 'Courier New', Courier, monospace;
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+    .loading-overlay {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(255,255,255,0.8);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="extraction-container">
+    <div class="header">
+        <h2><i class="fas fa-robot"></i> AI Document Extraction</h2>
+        <p class="text-muted">Upload an invoice or bill to extract data automatically using AI mapping.</p>
+    </div>
+
+    <div class="upload-section" id="dropZone">
+        <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: #4a90e2;"></i>
+        <h4>Drag & Drop Invoice here</h4>
+        <p>or</p>
+        <input type="file" id="fileInput" accept="image/*,application/pdf" style="display: none;">
+        <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">Browse Files</button>
+    </div>
+
+    <div class="results-section" id="resultsSection" style="display: none;">
+        <div class="preview-card">
+            <h5><i class="fas fa-eye"></i> Document Preview</h5>
+            <hr>
+            <div id="previewContainer">
+                 <img id="imagePreview" src="" alt="Preview">
+                 <iframe id="pdfPreview" style="width: 100%; height: 500px; display: none;"></iframe>
+            </div>
+        </div>
+        <div class="data-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h5><i class="fas fa-database"></i> Extracted Data (JSON)</h5>
+                <button class="btn btn-sm btn-outline-secondary" onclick="exportJSON()">Copy JSON</button>
+            </div>
+            <hr>
+            <pre id="jsonResult" class="json-tree"></pre>
+        </div>
+    </div>
+</div>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <h5 class="mt-3">Analyzing Document...</h5>
+    <p>Using OpenRouter AI Mapping</p>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
+    const resultsSection = document.getElementById('resultsSection');
+    const imagePreview = document.getElementById('imagePreview');
+    const pdfPreview = document.getElementById('pdfPreview');
+    const jsonResult = document.getElementById('jsonResult');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+
+    fileInput.onchange = e => {
+        const file = e.target.files[0];
+        if (file) processFile(file);
+    };
+
+    dropZone.ondragover = e => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#4a90e2';
+    };
+
+    dropZone.ondragleave = e => {
+        e.preventDefault();
+        dropZone.style.borderColor = '#e0e0e0';
+    };
+
+    dropZone.ondrop = e => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file) processFile(file);
+    };
+
+    async function processFile(file) {
+        // Show preview
+        const reader = new FileReader();
+        reader.onload = e => {
+            if (file.type.startsWith('image/')) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = 'block';
+                pdfPreview.style.display = 'none';
+            } else {
+                pdfPreview.src = e.target.result;
+                pdfPreview.style.display = 'block';
+                imagePreview.style.display = 'none';
+            }
+            resultsSection.style.display = 'grid';
+        };
+        reader.readAsDataURL(file);
+
+        // Send to backend
+        loadingOverlay.style.display = 'flex';
+        
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            // Note: In a real app, you'd proxy this through the Flask backend or call the FastAPI directly
+            // For this demo, let's assume we have a flask route /extract/ai
+            const response = await fetch('/extract/ai', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            
+            if (result.success) {
+                jsonResult.textContent = JSON.stringify(result.data, null, 4);
+                Swal.fire('Success', 'Data extracted successfully!', 'success');
+            } else {
+                Swal.fire('Error', result.error || 'Failed to extract data', 'error');
+            }
+        } catch (error) {
+            console.error(error);
+            Swal.fire('Error', 'Connection failed', 'error');
+        } finally {
+            loadingOverlay.style.display = 'none';
+        }
+    }
+
+    function exportJSON() {
+        const text = jsonResult.textContent;
+        navigator.clipboard.writeText(text);
+        alert('Copied to clipboard!');
+    }
+</script>
+{% endblock %}

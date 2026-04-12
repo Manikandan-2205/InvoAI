@@ -3,6 +3,7 @@ from routes.dashboard_route import dashboard_bp
 from routes.auth_route import auth_bp
 from routes.vendor_route import vendor_bp
 from routes.mapping_route import mapping_bp
+from routes.extraction_route import extraction_bp
 from flask import redirect, url_for
 
 
@@ -23,3 +24,4 @@ def register_routes(app):
     app.register_blueprint(auth_bp)
     app.register_blueprint(vendor_bp)
     app.register_blueprint(mapping_bp)
+    app.register_blueprint(extraction_bp)

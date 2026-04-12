@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, render_template, request, FastAPI, File, UploadFile, Form
-from api import global_data_client
+from api import global_data_client, ocr_mapping_client
 from services.auth import login_required
 import pytesseract
 from PIL import Image
@@ -80,3 +80,22 @@ async def extract_text(file: UploadFile = File(...), type: str = Form("image")):
 
     except Exception as e:
         return {"success": False, "error": str(e)}
+@mapping_bp.route("/process-ocr", methods=["POST"])
+@login_required
+def process_ocr():
+    if 'file' not in request.files:
+        return jsonify({"success": False, "error": "No file uploaded"})
+    
+    file = request.files['file']
+    mapping = request.form.get('mapping')
+    
+    if not mapping:
+        return jsonify({"success": False, "error": "No mapping provided"})
+        
+    file_content = file.read()
+    result = ocr_mapping_client.process_ocr_mapping(file_content, file.filename, mapping)
+    
+    if result.success:
+        return jsonify({"success": True, "results": result.data})
+    else:
+        return jsonify({"success": False, "error": result.message})

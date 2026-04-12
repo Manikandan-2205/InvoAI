@@ -9,7 +9,9 @@ from app.core.middleware.log_context import RequestContextLogMiddleware
 
 from app.api.v1 import (user_routes_v1, vendor_routes_v1,
                         auth_route_v1,
-                        extraction_details_route_v1)
+                        extraction_details_route_v1,
+                        ai_extraction_route,
+                        ocr_mapping_route)
 from app.api.v1 import extracted_json_route_v1
 from app.api.v1 import global_route_v1
 
@@ -49,6 +51,10 @@ app.include_router(vendor_routes_v1.router,
                    prefix="/api/v1/vendor", tags=["Vendor"])
 app.include_router(global_route_v1.router,
                    prefix="/api/v1/global", tags=["Global"])
+app.include_router(ai_extraction_route.router,
+                   prefix="/api/v1/ai", tags=["AI Extraction"])
+app.include_router(ocr_mapping_route.router,
+                   prefix="/api/v1/ocr", tags=["OCR Mapping"])
 
 # app.include_router(extraction_details_route_v1.router,
 #                    prefix="/api/v1/extraction-details", tags=["Extraction Details"])
