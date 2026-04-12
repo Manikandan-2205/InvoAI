@@ -7,13 +7,13 @@ from app.core.config import settings
 
 class AIExtractionService:
     def __init__(self):
-        self.api_key = os.getenv("OPENROUTER_API_KEY")
-        # Use a model that supports vision and is free
-        self.model = os.getenv("CLAUDE_MODEL_NAME", "google/gemini-2.0-flash-lite-preview-02-05:free")
-        self.base_url = "https://openrouter.ai/api/v1/chat/completions"
+        # Default to local Ollama if not specified, otherwise use .env
+        self.base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434/v1/chat/completions")
+        # Use a model that supports vision (e.g., llava, llama3.2-vision)
+        self.model = os.getenv("OLLAMA_VISION_MODEL", "llama3.2-vision")
 
     async def extract_invoice_data(self, file_content: bytes, mime_type: str) -> Dict[str, Any]:
-        """Extract data from invoice using AI."""
+        """Extract data from invoice using Local Ollama AI."""
         
         # Convert image/pdf to base64
         base64_file = base64.b64encode(file_content).decode('utf-8')
@@ -34,6 +34,7 @@ class AIExtractionService:
         Ensure the JSON is valid and only return the JSON object.
         """
 
+        # Ollama supports the OpenAI-style vision messages
         messages = [
             {
                 "role": "user",
@@ -49,27 +50,20 @@ class AIExtractionService:
             }
         ]
 
-        headers = {
-            "Authorization": f"Bearer {self.api_key}",
-            "Content-Type": "application/json",
-            "HTTP-Referer": "http://localhost:5000",
-            "X-Title": "InvoAI"
-        }
-
         async with httpx.AsyncClient() as client:
             response = await client.post(
                 self.base_url,
-                headers=headers,
                 json={
                     "model": self.model,
                     "messages": messages,
-                    "response_format": {"type": "json_object"}
+                    "format": "json", # Ollama specific for raw JSON output
+                    "stream": False
                 },
-                timeout=60.0
+                timeout=120.0
             )
             
             if response.status_code != 200:
-                raise Exception(f"AI Service Error: {response.text}")
+                raise Exception(f"Local AI Service (Ollama) Error: {response.text}")
             
             result = response.json()
             content = result['choices'][0]['message']['content']
