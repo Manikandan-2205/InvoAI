@@ -7,5 +7,6 @@ if (Test-Path .env) {
     }
 }
 
-Write-Host "Starting Claude Code with OpenRouter..." -ForegroundColor Green
-claude
+Write-Host "Starting InvoAI with Ollama (DeepSeek)..." -ForegroundColor Cyan
+# claude (OpenRouter version)
+ollama run deepseek-coder:1.3b
